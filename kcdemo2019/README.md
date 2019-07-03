@@ -249,7 +249,15 @@ microk8s.daemon-scheduler           enabled  active   -
 sudo iptables -P FORWARD ACCEPT
 ```
 
-5. Follow the steps from the regular Quickstart
+5. Make *sure* you update the arguments in the YAML file to point to the proper microk8s directories. For example: 
+```
+      - name: registration-dir
+        hostPath:
+          path: /var/snap/microk8s/common/var/lib/kubelet/plugins_registry/
+          type: Directory
+```
+
+Notice how the path now, is prepended with `/var/snap/microk8s/common/` compared to the orignal file. Depending on what distro you are using, this might differ. Then lastly, follow the steps from the regular Quickstart.
 
 
 # Know issues
